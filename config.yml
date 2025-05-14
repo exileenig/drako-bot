@@ -1,0 +1,1833 @@
+# ===========================================================================
+# Drako Bot Configuration
+# If you find any issues, need support, or have a suggestion for the bot, please join our support server and create a ticket, 
+# http://discord.drakodevelopment.net
+
+# BOT INFORMATION
+Version: "1.8.3" # Don't change this!
+BotToken: "BOT_TOKEN" # If you need help getting your BotToken please open a ticket here: http://discord.drakodevelopment.net
+mongoURI: "MONGO_URI"
+GuildID: "GUILD_ID" # This is your server's ID, Right click on your server icon and copy ID
+BotName: "Drako Bot"
+LogCommands: false
+Statistics: true  # Set to false to disable statistics in startup
+Timezone: "America/New_York" # Use https://gist.github.com/diogocapela/12c6617fc87607d11fd62d2a4f42b02a 
+
+EmbedColors: "#1769FF"
+SuccessEmbedColor: "#2ecc71"
+ErrorEmbedColor: "#E74C3C"
+
+# Run npx --no discord-player-youtubei in your console (Use Command Prompt on your PC)
+# MAKE SURE TO USE A THROW AWAY ACCOUNT THAT IS 18+  AS IT MAY BE BANNED!!!
+# https://docs.drakodevelopment.net/our-bots/drako-bot/music 
+YouTubeKey: "" # This isn't required but will improve reliability
+Player: "iOS" # Don't change unless required. - 'WEB' | 'iOS' | 'ANDROID' | 'YTMUSIC_ANDROID' | 'YTMUSIC' | 'YTSTUDIO_ANDROID' | 'TV_EMBEDDED' | 'YTKIDS';
+
+Dashboard:
+  Enabled: false
+  ClientID: "CLIENT_ID"
+  ClientSecret: "CLIENT_SECRET"
+  Url: "http://IP:PORT" # http://IP:PORT/api/auth/callback - Add this to the discord dev portal
+  Port: 3000
+  Auth:
+    JWTSecret: "SECRET" # Use a strong secret
+    
+  Permissions:
+    Dashboard:
+      Login: ["ROLE_ID", "ROLE_ID"] # Who can login?
+      Usage: ["ROLE_ID", "ROLE_ID"] # Who can view bot usage?
+      Settings: ["ROLE_ID"] # Who can configure settings?
+      Embed: ["ROLE_ID", "ROLE_ID"] # Who can create and post embeds?
+      Suggestions: ["ROLE_ID", "ROLE_ID"] # Who can manage suggestions?
+
+# ===========================================================================
+# EVENT LOGS
+# ===========================================================================
+# User Logs
+UserUpdateLogs:
+  Enabled: false
+  LogsChannelID: "CHANNEL_ID"
+
+RoleAddLogs:
+  Enabled: false
+  LogsChannelID: "CHANNEL_ID"
+
+RoleRemoveLogs:
+  Enabled: false
+  LogsChannelID: "CHANNEL_ID"
+
+# Guild Logs
+GuildUpdateLogs:
+  Enabled: false
+  LogsChannelID: "CHANNEL_ID"
+
+ChannelCreatedLogs:
+  Enabled: false
+  LogsChannelID: "CHANNEL_ID"
+
+ChannelDeletedLogs:
+  Enabled: false
+  LogsChannelID: "CHANNEL_ID"
+
+# Message Logs
+MessageDeleteLogs:
+  Enabled: false
+  LogsChannelID: "CHANNEL_ID"
+  LogImages: true
+
+MessageUpdateLogs:
+  Enabled: false
+  LogsChannelID: "CHANNEL_ID"
+
+# Voice Logs
+VoiceChannelStreamStart:
+  Enabled: false
+  LogsChannelID: "CHANNEL_ID"
+
+VoiceChannelStreamStop:
+  Enabled: false
+  LogsChannelID: "CHANNEL_ID"
+
+VoiceChannelJoin:
+  Enabled: false
+  LogsChannelID: "CHANNEL_ID"
+
+VoiceChannelLeave:
+  Enabled: false
+  LogsChannelID: "CHANNEL_ID"
+
+VoiceChannelSwitch:
+  Enabled: false
+  LogsChannelID: "CHANNEL_ID"
+
+# Moderation Logs
+TimeoutLogs:
+  Enabled: false
+  LogsChannelID: "CHANNEL_ID"
+
+UntimeLogs:
+  Enabled: false
+  LogsChannelID: "CHANNEL_ID"
+
+WarnLogs:
+  Enabled: false
+  LogsChannelID: "CHANNEL_ID"
+
+BanLogs:
+  Enabled: false
+  DM:
+    Enabled: false
+    Embed:
+      Title: "🚫 Ban Notification"
+      Description:
+        - "**🏰 Guild:** {guildName}"
+        - "**🔨 Banned By:** {moderator}"
+        - "**📝 Reason:** {reason}"
+        - "**📅 Date:** {longtime}, {shorttime}"
+        - " "
+        - "🚷 You have been banned from the server."
+      Footer: "🔒 Moderation Action | DrakoBot"
+      Color: "#1769FF"
+  LogsChannelID: "CHANNEL_ID"
+  Embed:
+    Title: "🔨 Ban Action | User: {userTag}"
+    Description:
+      - "**👤 User:** {user}"
+      - "**🛠️ Moderator:** {moderator}"
+      - "**📝 Reason:** {reason}"
+      - "**📅 Date:** {longtime}, {shorttime}"
+      - " "
+      - "This ban has been completed."
+    Footer: "🔒 Moderation Action | DrakoBot"
+    Color: "#1769FF"
+  Thumbnail: true
+
+UnbanLogs:
+  Enabled: false
+  LogsChannelID: "CHANNEL_ID"
+  Embed:
+    Title: "🔓 Unban Action | User: {userTag}"
+    Description:
+      - "**👤 User:** {user}"
+      - "**🛠️ Moderator:** {moderator}"
+      - "**📝 Reason for Unban:** {reason}"
+      - "**📅 Date:** {longtime}, {shorttime}"
+      - " "
+      - "The user's ban has been lifted, restoring their access to the server."
+    Footer: "🔒 Moderation Action | DrakoBot"
+    Color: "#1769FF"
+  Thumbnail: true
+
+KickLogs:
+  Enabled: false
+  DM:
+    Enabled: true
+    Embed:
+      Title: ":boot: Kick Notification"
+      Description:
+        - "**👤 User:** {user}"
+        - "**🛠️ Kicked By:** {moderator}"
+        - "**📝 Reason:** {reason}"
+        - "**📅 Date:** {longTime}, {shortTime}"
+      Footer: "🔒 Moderation Action | DrakoBot"
+      Color: "#1769FF"
+  LogsChannelID: "CHANNEL_ID"
+  Embed:
+    Title: ":warning: User Kicked | Case #{caseNumber}"
+    Description:
+      - "**👤 User:** {user} (ID: {userId})"
+      - "**🔧 Moderator:** {moderator}"
+      - "**📝 Reason:** {reason}"
+      - "**📅 Date:** {longTime}, {shortTime}"
+    Footer: "🔒 Moderation Action | DrakoBot"
+    Color: "#1769FF"
+    Thumbnail: true
+
+# Misc Logs
+GiveawayLogs:
+  Enabled: false
+  LogsChannelID: "CHANNEL_ID"
+
+  GiveawayStarted:
+    Embed:
+      Title: ":tada: Giveaway Started :tada:"
+      Description:
+        - "**🎁 Prize:** `{prize}` x{winnerCount}"
+        - "**👤 Hosted by:** {hostedBy}"
+        - "**📢 Channel:** {channel}"
+        - "**🏆 Winner Count:** `{winnerCount}`"
+        - "**⏰  Ends in:** {endsIn}"
+      Footer: "🔒 Giveaway Log | DrakoBot"
+      Color: "#1769FF"
+      ThumbnailUrl: "https://i.imgur.com/ewT6bOT.png"
+      Thumbnail: true
+
+  GiveawayEnded:
+    Embed:
+      Title: ":tada: Giveaway Ended :tada:"
+      Description:
+        - "**🎁 Prize:** `{prize}` x{winnerCount}"
+        - "**👤 Hosted by:** {hostedBy}"
+        - "**📢 Channel:** {channel}"
+        - "**🏆 Winner Count:** `{winnerCount}`"
+        - "**🏆 Winners:** {winners}"
+      Footer: "🔒 Giveaway Log | DrakoBot"
+      Color: "#1769FF"
+      ThumbnailUrl: "https://i.imgur.com/ewT6bOT.png"
+      Thumbnail: true
+
+  GiveawayRerolled:
+    Embed:
+      Title: ":tada: Giveaway Rerolled :tada:"
+      Description:
+        - "**🎁 Prize:** `{prize}` x{winnerCount}"
+        - "**👤 Hosted by:** {hostedBy}"
+        - "**📢 Channel:** {channel}"
+        - "**🏆 Winner Count:** `{winnerCount}`"
+        - "**🏆 New Winners:** {winners}"
+      Footer: "🔒 Giveaway Log | DrakoBot"
+      Color: "#1769FF"
+      ThumbnailUrl: "https://i.imgur.com/ewT6bOT.png"
+      Thumbnail: true
+
+
+# ===========================================================================
+# TICKET SYSTEM
+# ===========================================================================
+TicketSettings:
+  Enabled: true
+  LogsChannelID: "1310361116706213929"
+  MaxTickets: 1
+  DeletionTime: "5"
+  useSelectMenu: true
+  overFlow: ["CATEGORY_ID", "CATEGORY_ID"] # Tickets will be moved to this category if the main category is full (Left to right)
+
+  DelayedResponse:
+    Enabled: true
+    TicketThreshold: 25 # Send warning when there are this many open tickets
+    Embed:
+      Title: ""
+      Description:
+        - "# 🎫 High Support Volume Notice"
+        - ""
+        - "⚠️ We are currently experiencing higher than usual ticket volume."
+        - ""
+        - "## Current Status"
+        - "> 📊 **Active Tickets:** {openTickets}"
+        - "> ⏱️ **Est. Response Time:** 24-48 hours"
+        - "> 🔄 **Status:** Processing tickets in order received"
+        - ""
+        - "## Need Immediate Help?"
+        - "• Review our [Documentation](https://docs.drakodevelopment.net)"
+        - "• Join our [Community](https://discord.gg/drakobot)"
+      Footer:
+        Text: "Your ticket will still be created • Thank you for your patience"
+        Icon: "https://i.imgur.com/w5XxKpc.png"
+      Color: "#FFA500"
+      Image: "https://i.imgur.com/LbjDuZ8.png"
+      Thumbnail: "https://i.imgur.com/1FGL7XO.png"
+
+  CloseReasons:
+    Enabled: true
+    DefaultReason: "No reason provided"
+    Reasons:
+      - name: "Issue Resolved"
+        emoji: "✅"
+        value: "resolved"
+      - name: "User Request"
+        emoji: "👋"
+        value: "user_request"
+      - name: "Inactive"
+        emoji: "⏰"
+        value: "inactive"
+      - name: "Invalid"
+        emoji: "❌"
+        value: "invalid"
+    AllowCustomReason: true
+
+Priority:
+  Enabled: true 
+  DefaultPriority: "Low"
+
+  Levels:
+    Low:
+      Roles: ["ROLE_ID", "ROLE_ID"] # Roles assigned this priority
+      Tag: ["ROLE_ID", "ROLE_ID"] # Roles to tag when a ticket is opened by this priority
+      MoveTop: false # Should their ticket be moved to the top of the category?
+
+    Medium:
+      Roles: ["ROLE_ID", "ROLE_ID"] # Roles assigned this priority
+      Tag: ["ROLE_ID", "ROLE_ID"] # Roles to tag when a ticket is opened by this priority
+      MoveTop: true # Should their ticket be moved to the top of the category?
+
+    High:
+      Roles: ["ROLE_ID", "ROLE_ID"] # Roles assigned this priority
+      Tag: ["ROLE_ID", "ROLE_ID"] # Roles to tag when a ticket is opened by this priority
+      MoveTop: true # Should their ticket be moved to the top of the category?
+
+WorkingHours:
+  Enabled: false
+  Timezone: "Europe/London" # https://gist.github.com/diogocapela/12c6617fc87607d11fd62d2a4f42b02a
+  Schedule: 
+    Monday: "16:00-22:00"
+    Tuesday: "16:00-22:00"
+    Wednesday: "16:00-22:00"
+    Thursday: "16:00-22:00"
+    Friday: "16:00-22:00"
+    Saturday: "16:00-22:00"
+    Sunday: "16:00-22:00"
+  allowOpenTickets: true # Should people be able to open tickets during the off hours? 
+
+WorkingEmbed: # This will be posted in the ticket if it's raised out of hours
+  Embed:
+    Title: "Support Ticket Notice"
+    Description:
+      - "Please note that this ticket has been raised outside of working hours."
+      - "Our response may be delayed."
+      - " "
+      - "Our working hours are between {workinghours_start} and {workinghours_end}."
+    Footer:
+      Text: "Drako Development | Ticket System"
+      Icon: "https://i.imgur.com/w5XxKpc.png"
+    Author:
+      Text: "Drako Development Support"
+      Icon: "https://i.imgur.com/w5XxKpc.png"
+    Color: "#1769FF"
+    Image: "https://images-ext-1.discordapp.net/external/OllWGq5ta58LX6KoA8yEVTMrI9L4BJ0iE_T0pE4TZvw/https/i.imgur.com/LbjDuZ8.png?format=webp&quality=lossless&width=1618&height=403"
+    Thumbnail: ""
+
+TicketPanelSettings:
+  Panel1:
+    Embed:
+      Title: "📩 Support Tickets"
+      Description: 
+        - "Please select a category below for assistance."
+        - " "
+        - "🕒 **Standard Working Hours**: {workinghours_start_monday} - {workinghours_end_monday}"
+        - "_Note: We strive to be available outside these hours, but response times may be delayed._"
+      Footer:
+        Text: "Drako Development | Ticket System"
+        Icon: "https://i.imgur.com/w5XxKpc.png"
+      Author:
+        Text: "Drako Support Team"
+        Icon: "https://i.imgur.com/w5XxKpc.png"
+      Color: "#1769FF"
+      Image: "https://i.imgur.com/1FGL7XO.png"
+      Thumbnail: ""
+
+TicketTranscript:
+  Type: "WEB" # TXT, WEB
+  Save: true
+  MinMessages: "1"
+  SavePath: "./transcripts/"  # This will save in a transcripts folder in your bot's root directory
+
+# {ticketType} displays the ticket type
+# {user} is @John James
+# {guild} displays the guild 
+# {question} question array
+# {answer} answer array
+# {userIcon} displays the user's icon
+TicketCreation:
+  Default:
+    Followup:
+      Message: "Thank you {user} for reaching out! Please describe your issue in detail."
+    Embed:
+      Title: "🎫 New Support Ticket"
+      Description:
+        - "Welcome to our Support System, {user}!"
+        - ""
+        - "**Ticket Type:** {ticketType}"
+        - "**Expected Response Time:** Within 24 hours"
+        - "**Claimed By:** {claimer}"
+        - ""
+        - "{questions}"
+        - "Our support team will assist you shortly."
+      Footer:
+        Text: "Drako Development | Ticket System"
+        Icon: "https://i.imgur.com/w5XxKpc.png"
+      Color: "#1769FF"
+      Thumbnail: "{userIcon}" 
+    QuestionFormat:
+      - "**{question}**"
+      - "```{answer}```"
+
+  TicketType1:
+    Followup:
+      Message: "Thank you {user} for your purchase inquiry! Our sales team will assist you shortly."
+    Embed:
+      Title: "️ New Purchase Support Ticket"
+      Description:
+        - "Welcome to our Sales Support, {user}!"
+        - ""
+        - "**Ticket Type:** {ticketType}"
+        - "**Expected Response Time:** Within 12 hours"
+        - "**Claimed By:** {claimer}"
+        - ""
+        - "{questions}"
+        - "Our sales team will assist you shortly."
+      Footer:
+        Text: "Drako Development | Sales Support"
+        Icon: "https://i.imgur.com/w5XxKpc.png"
+      Color: "#00FF00"
+      Thumbnail: "{userIcon}"
+    QuestionFormat:
+      - "**{question}**"
+      - "```{answer}```"
+
+ArchiveDesign:
+  Embed:
+    Title: "Ticket Archived"
+    Description:
+      - "### 🎫 Ticket Status"
+      - "This ticket has been closed and archived."
+      - ""
+      - "### 👤 Details"
+      - "> **Creator:** {userTag}"
+      - "> **Reason:** {reason}"
+      - ""
+      - "### ⚡ Quick Actions"
+      - "• Use the buttons below to manage this ticket"
+      - "• Need help? Create a new ticket"
+    Footer:
+      Text: "Drako Development • Ticket System"
+      Icon: "https://i.imgur.com/w5XxKpc.png"
+    Color: "#2B2D31"
+    Image: "https://i.imgur.com/LbjDuZ8.png"
+    Thumbnail: "https://i.imgur.com/1SbfB8i.png"
+    Buttons:
+      1:
+        Name: "Reopen"
+        Emoji: "🔓"
+        Style: "Primary"
+        Type: "REOPEN"
+      2:
+        Name: "Transcript"
+        Emoji: "📑"
+        Style: "Secondary"
+        Type: "TRANSCRIPT"
+      3:
+        Name: "Delete"
+        Emoji: "🗑️"
+        Style: "Danger"
+        Type: "DELETE"
+
+UserLeftDesign:
+  Embed:
+    Title: "User Alert"
+    Description:
+      - "The creator of this ticket, **{user}** has left the server."
+    Footer:
+      Text: "User ID: {userId}"
+      Icon: "{userIcon}"
+    Author:
+      Text: ""
+      Icon: ""
+    Color: "#1769FF"
+    Image: ""
+    Thumbnail: "{userIcon}"
+  Button:
+    Name: "Delete Ticket"
+    Emoji: "⛔"
+    Style: "Secondary" # Primary, Secondary, Success, Danger
+
+TicketTypes:
+  TicketType1:
+    Enabled: true
+    Panel: "Panel1"
+    Name: "General Support"
+    ChannelName: "{ticket-id}-General-{user}-{priority}"
+    ChannelTopic: "Category: {ticketType} | User: {userid} | Priority: {priority}"
+    CategoryID: "1310361067897094235"
+    AutoAlert: "5s" # How long until /alert is sent (When the user doesn't respond in the ticket') - Set to 0 to disable
+    ArchiveCategory: "" # Leave blank to delete ticket rather than Archive
+    SupportRole: ["1272331356445347840"]
+    UserRole: ["1272331356445347840"]
+    TagSupport: true
+    TagCreator: true
+    RestrictDeletion: false
+    Claiming:
+      Enabled: true
+      Button:
+        Name: "Claim Ticket"
+        Emoji: "🎫"
+        Style: "Secondary" # Primary, Secondary, Success, Danger
+      RestrictResponse: true # If true, only the claimer can respond until unclaimed
+      AnnounceClaim: true # Should the ticket be announced to the channel when claimed?
+    Button:
+      Name: "General Support"
+      Emoji: "🔍"
+      Style: "Danger"
+      Description: "Open to receive general support"
+    Questions: 
+      - PurchaseID:
+          Question: "Do you have a transaction ID?"
+          Placeholder: "TBX-wdUGVApxKSMXham"
+          Style: "Short" # Short, Paragraph
+          Required: false
+          maxLength: 1000
+
+  TicketType2:
+    Enabled: true
+    Panel: "Panel1" # Which panel should this type be assigned to? 
+    Name: "Technical Support"
+    ChannelName: "{ticket-id}-Technical-{user}-{priority}"
+    ChannelTopic: "Category: {ticketType} | User: {userid} | Priority: {priority}"
+    CategoryID: ""
+    AutoAlert: "15s" # How long until /alert is sent (When the user doesn't respond in the ticket') - Set to 0 to disable
+    ArchiveCategory: ""
+    SupportRole: ["1272331356445347840"]
+    UserRole: [""] 
+    TagSupport: true
+    TagCreator: true
+    RestrictDeletion: true # Should the ticket be closable by users?
+    Claiming:
+      Enabled: true
+      Button:
+        Name: "Claim Ticket"
+        Emoji: "🎫"
+        Style: "Secondary" # Primary, Secondary, Success, Danger
+      RestrictResponse: true # If true, only the claimer can respond until unclaimed
+      AnnounceClaim: true # Should the ticket be announced to the channel when claimed?
+    Button:
+      Name: "Technical Support"
+      Emoji: "💻"
+      Style: "Primary" # Primary, Secondary, Success, Danger
+      Description: "Technical questions and issues"
+    Questions: []
+
+Alert:
+  Enabled: true
+  Time: "12h"
+  DM:
+    Enabled: true
+    Embed:
+      Title: "⚠️ Ticket Alert"
+      Description:
+        - "Hello {user}"
+        - " "
+        - "**Ticket Information**"
+        - "> **Server:** {guild}"
+        - "> **Time Until Close:** {time}"
+        - "> **Reason:** {reason}"
+        - " "
+        - "**⚠️ Action Required**"
+        - "Your ticket requires attention and will be automatically closed if no response is received."
+        - "Click the button below to go to your ticket."
+      Footer:
+        Text: "Drako Development | Ticket System"
+        Icon: "https://i.imgur.com/w5XxKpc.png"
+      Author:
+        Text: "Ticket Alert System"
+        Icon: "https://i.imgur.com/w5XxKpc.png"
+      Color: "#FF0000"
+      Image: ""
+      Thumbnail: ""
+    Button:
+      Label: "Go to Ticket"
+      Emoji: "🎫"
+
+  Embed:
+    Title: "⚠️ Ticket Alert"
+    Description:
+      - "**Ticket Information**"
+      - "> **User:** {user}"
+      - "> **Time Until Close:** {time}"
+      - "> **Reason:** {reason}"
+      - " "
+      - "**⚠️ Action Required**"
+      - "This ticket requires attention and will be automatically closed if no response is received."
+    Footer:
+      Text: "Drako Development | Ticket System"
+      Icon: "https://i.imgur.com/w5XxKpc.png"
+    Author:
+      Text: "Ticket Alert System"
+      Icon: "https://i.imgur.com/w5XxKpc.png"
+    Color: "#FF0000"
+    Image: ""
+    Thumbnail: ""
+    Button:
+      Label: "Close Ticket"
+      Emoji: "🔒"
+      Style: "Danger" # Primary, Secondary, Success, Danger
+
+TicketClosureDM:
+  Enabled: true
+  Transcript: true
+  Embed:
+    Title: "Ticket Closure Notification"
+    Description:
+      - "{userTag}, your ticket in {guild} has been closed."
+      - " "
+      - "**Ticket Summary**"
+      - "> **Messages:** {messageCount}"
+      - "> **Priority:** {priority}"
+      - "> **Handled By:** {claimer}"
+      - "> **Close Reason:** {reason}"
+      - " "
+      - "We value your feedback! Please leave us a review below."
+    Footer:
+      Text: "Drako Development | Ticket System"
+      Icon: "https://i.imgur.com/w5XxKpc.png"
+    Author:
+      Text: "Drako Support"
+      Icon: "https://i.imgur.com/w5XxKpc.png"
+    Color: "#1769FF"
+    Image: "https://images-ext-1.discordapp.net/external/OllWGq5ta58LX6KoA8yEVTMrI9L4BJ0iE_T0pE4TZvw/https/i.imgur.com/LbjDuZ8.png?format=webp&quality=lossless&width=1618&height=403"
+    Thumbnail: "https://i.imgur.com/w5XxKpc.png"
+
+Reviews:
+  Enabled: true
+  Emoji: "⭐"
+  Placeholder: "Rate us!"
+  Text: "Stars"
+  askWhy: true # Should the bot ask the user why for the review they gave?
+
+Logs:
+  Close: 
+    Embed:
+      Title: "**Ticket Closure**"
+      Description:
+        - "**Closure**"
+        - "> Ticket has been closed by {userTag}."
+        - "> **Reason:** {reason}"
+        - " "
+        - "**Information**"
+        - "> **Creator:** {ticketCreator}"
+        - "> **Messages:** {messageCount}"
+        - "> **Priority:** {priority}"
+        - "> **Claimed By:** {claimer}"
+        - " "
+        - "**Ticket Channel**"
+        - "> {channelName}"
+        - " " 
+        - "**Review**"
+        - "> **Rating:** {rating}"
+      Footer:
+        Text: "Drako Development | Ticket System"
+        Icon: "https://i.imgur.com/w5XxKpc.png"
+      Author:
+        Text: "Ticket System"
+        Icon: "https://i.imgur.com/w5XxKpc.png"
+      Color: "#1769FF"
+      Image: "https://images-ext-1.discordapp.net/external/OllWGq5ta58LX6KoA8yEVTMrI9L4BJ0iE_T0pE4TZvw/https/i.imgur.com/LbjDuZ8.png?format=webp&quality=lossless&width=1618&height=403"
+      Thumbnail: "https://i.imgur.com/w5XxKpc.png"
+      ReviewFormat: "> **Review:** `{review}`"
+
+# ===========================================================================
+# LEVELING SYSTEM
+# ===========================================================================
+# Placeholders
+# {userName}: YouSeeMeRunning
+# {user}: @YouSeeMeRunning
+# {userId}: 264032125496459265 - This is the ID
+# {userBanner}: Displays their users banner in the image field  
+# {guildName}: Guild Name
+# {guildIcon}: Guild Icon
+# {oldLevel}: What was your previous level?
+# {newLevel}: What is your new level?
+# {oldXP}: How much XP you gained to level up
+# {newXP}: How much XP you need to level up again
+# {randomLevelMessage}: Outputs a random level message from lang.yml
+# {userIcon}: Displays the users icon
+# {guildIcon}: Displays the guilds icon
+
+LevelingSystem:
+  Enabled: false
+  ResetDataOnLeave: false # Reset user level and xp if they leave the server?
+  MessageXP: "10-20" # Range of XP gained from sending messages
+  VoiceXP: "1-3" # Range of XP gained from being in a voice call
+  XPNeeded: 150 # XP multiplier each level
+  Permission: ["ROLE_ID", "ROLE_ID"] # Who can use the level admin commands?
+  ChannelSettings:
+    LevelUpChannelID: "" # Leave empty for the channel the user is currently in
+    DisabledChannels: [""] # Users won't gain XP in these channels
+    DisabledCategories: [""] # Users won't gain XP in these categories
+
+  CooldownSettings:
+    EnableXPCooldown: true # Enable cooldown for gaining XP to prevent spam
+    XPCooldown: "1s" # XP Cooldown, 1s/1m/1h
+    VoiceInterval: "10s"
+
+  LevelUpMessageSettings:
+    LevelUpMessage: "{user}, you are now level {newLevel}"
+    UseEmbed: false
+    Embed:
+      Title: "🎉 Level Up!"
+      Description:
+        - "{randomLevelMessage}"
+      Footer:
+        Text: ""
+        Icon: ""
+      Author:
+        Text: ""
+        Icon: ""
+      Color: "#1769FF"
+      Image: ""
+      Thumbnail: "{userIcon}"
+        
+  RoleSettings:
+    StackRoles: false
+    LevelRoles:
+      - level: 1
+        roleID: ""
+      - level: 5
+        roleID: ""
+
+    ScaleRewards:
+      StackRewards: false
+      Rewards:
+        - level: +1
+          coins: 10
+
+RankCard:
+  AccentColor: '#1769FF'
+  SecondaryColor: '#4785FF'
+  ProgressBar:
+    StartColor: '#1769FF'
+    EndColor: '#4785FF'
+  TextColors:
+    LevelText: '#FFFFFF'
+    RankText: '#FFFFFF'
+    Numbers: '#FFFFFF'
+  Emojis:
+    Level: '✧'
+    TopRank: '♚'
+    NormalRank: '★'
+    
+# ===========================================================================
+# MODERATION
+# ===========================================================================
+ModerationRoles: # Who can use these commands?
+  reminder: ["ROLE_ID", "ROLE_ID"] # Allows you to set reminders for other users
+  addrole: ["ROLE_ID", "ROLE_ID"]
+  roleall: ["ROLE_ID", "ROLE_ID"]
+  ban: ["ROLE_ID", "ROLE_ID"]
+  tempban: ["ROLE_ID", "ROLE_ID"]
+  clearchannel: ["ROLE_ID", "ROLE_ID"]
+  clearhistory: ["ROLE_ID", "ROLE_ID"]
+  cleartimeout: ["ROLE_ID", "ROLE_ID"]
+  embed: ["ROLE_ID", "ROLE_ID"]
+  history: ["ROLE_ID", "ROLE_ID"]
+  kick: ["ROLE_ID", "ROLE_ID"]
+  poll: ["ROLE_ID", "ROLE_ID"]
+  purge: ["ROLE_ID", "ROLE_ID"]
+  removerole: ["ROLE_ID", "ROLE_ID"]
+  setnote: ["ROLE_ID", "ROLE_ID"]
+  viewnote: ["1272331356445347840", "ROLE_ID"]
+  slowmode: ["ROLE_ID", "ROLE_ID"]
+  timeout: ["ROLE_ID", "ROLE_ID"]
+  unban: ["ROLE_ID", "ROLE_ID"]
+  warn: ["ROLE_ID", "ROLE_ID"]
+  unwarn: ["ROLE_ID", "ROLE_ID"]
+  temprole: ["ROLE_ID", "ROLE_ID"]
+  nickname: ["ROLE_ID", "ROLE_ID"]
+  blacklist: ["ROLE_ID", "ROLE_ID"]
+
+PurgeLogChannel: "CHANNEL_ID"
+
+Warnings:
+  Expiry: "30d" # 1d 15m = 1 day 15 minutes
+
+  Punishments: 
+    1: 
+      Timeout: "" # Leave blank for no punishment
+    2: 
+      Timeout: "10m"
+    3: 
+      Timeout: "15m" # Supports up to 30 days
+
+AutoKick: 
+ Enabled: false
+ Time: "10s" # 1h 15s = 1 hour 15 seconds, 10m 15s = 10 minute 15 seconds
+ Role: ["ROLE_ID", "ROLE_ID"] # The user needs to have one of these roles to not get kicked
+ DM:
+   Enabled: true
+   Embed:
+     Title: "⚠️ Verification Failure ⚠️"
+     Description: 
+       - "🚫 **Notice:** You failed to verify within the given amount of time."
+       - "Please rejoin and verify to remain in our server. discord.gg/drakobot"
+     Color: "#1769FF"
+     Footer: "Automatic Kick | DrakoBot"
+
+# Alt Prevention System
+AltPrevention:
+  Enabled:  false
+  TimeLimit: "30d"
+  KickAlts: false
+
+  DM:
+    Enabled: true
+    Embed:
+      Title: "⚠️ Alt Account Alert ⚠️"
+      Description:
+        - "🚫 **Notice:** Your account is too new to join {guildName}."
+        - "🕒 **Account Age:** {user-createdAt}"
+        - "🛑 **Required Age:** 30 days"
+        - "Please return when your account meets the age requirement."
+        - "**📅 Detection Date:** {longTime}"
+      Footer:
+        Text: "Alt Detection System | {guildName}"
+        Icon: "{guildIcon}"
+      Author:
+        Text: "{userName}"
+        Icon: "{user-avatar}"
+      Color: "#1769FF"
+      Image: "{userBanner}"
+      Thumbnail: "{user-avatar}"
+
+  Log:
+    LogsChannelID: "CHANNEL_ID"
+    Title: "⚠️ Potential Alt Account Detected ⚠️"
+    Description:
+      - "**👤 User:** {user} (ID: {userId})"
+      - "🕒 **Account Age:** {user-createdAt}"
+      - "**👢 Kicked:** {kickStatus}"
+      - "🛑 **Required Age:** 30 days"
+      - "**📅 Detection Date:** {longTime}, {shortTime}"
+    Footer:
+      Text: "Alt Detection System | {guildName}"
+      Icon: "{guildIcon}"
+    Author:
+      Text: "{userName}"
+      Icon: "{user-avatar}"
+    Color: "#1769FF"
+    Image: "{userBanner}"
+    Thumbnail: "{user-avatar}"
+
+# Blacklist Words System
+BlacklistWords:
+  Enabled: false
+  Patterns:
+    - "example.net"        # Exact match
+    - "discord.gg/*"       # Matches any path after discord.gg/
+    - "*badword*"          # Matches badword anywhere in the string
+    - "regex:\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Z|a-z]{2,}\\b"  # Email regex
+    - "regex:\\b(?:\\d{1,3}\\.){3}\\d{1,3}\\b" # IP Address regex
+  WhitelistWords:
+    - "discord.gg/drakobot"
+  WhitelistChannels: 
+    - "CHANNEL_ID"  # IDs of channels that should be exempted
+  WhitelistCategories:
+    - "CATEGORY_ID"  # IDs of categories to exempt
+  BypassPerms: ["ManageMessages"]
+  BypassRoles: ["ROLE_ID"]
+  Message: "{user}, you used a blacklisted word!"
+  DM:
+    Enabled: true
+    Message: "Hello {user}, you sent a blacklisted word, **{blacklistedword}**. \n Please refrain from doing so in the future."
+    Type: "Message" # Message, Embed
+    Embed:
+      Title: "🚫 Blacklisted Word Detected"
+      Description:
+        - "Hello {user}, you sent a blacklisted word"
+        - "🔍 **Blacklisted Word:** {blacklistedword}"
+        - "🚫 **Action:** Your message was deleted"
+        - "**🕰️ Time:** {longtime}, {shorttime}"
+      Color: "#1769FF"
+      Footer: "DrakoBot | {shorttime}"
+      Thumbnail: true
+  LogsChannelID: "CHANNEL_ID"
+  Embed:
+    Title: "🚫 Blacklisted Word Detection"
+    Description:
+      - "🚨 **Alert:** {user} used a blacklisted word"
+      - "🔍 **Offending Word:** {blacklistedword}"
+      - "🚫 **Consequence:** Message was removed"
+      - "**🕰️ Timestamp:** {longtime}, {shorttime}"
+    Footer:
+      Text: "DrakoBot | {guildName}"
+      Icon: "{guildIcon}"
+    Author:
+      Text: ""
+      Icon: ""
+    Color: "#1769FF"
+    Image: "{userBanner}"
+    Thumbnail: ""
+
+AntiNuke:
+  Enabled: false # Should AntiNuke be enabled?
+  WhitelistedRoles: ["ROLE_ID1", "ROLE_ID2"]
+
+  Default: # This applies to everyone that has any power in the discord (Timeout, kick, ban, manage server, etc)
+    Tiers:
+      Tier1: # First tier
+        Protection:
+          kickThreshold: 2
+          banThreshold: 2
+          channelDeleteThreshold: 2
+          roleDeleteThreshold: 2
+          duration: "10s" # Time window to assess activity levels
+        Actions:
+          notify: ["USER_ID1", "USER_ID2"] # User IDs to notify
+          removeRole: false # Remove the user's role with moderation permissions
+          mute: true # The bot can't mute if they have admin
+          ban: false
+        Logs:
+          Enabled: true
+          Embed:
+            Title: "Anti Nuke - Tier 1"
+            Description:
+              - "👤 **User:** {user}"
+              - "🔍 **Trigger:** {threshold}"
+              - "🚫 **Amount:** {threshold_amount}"
+              - "**📅 Date:** {timestamp}"
+            Color: "#1769FF"
+            Footer: "Anti Nuke | DrakoBot"
+            Thumbnail: true
+            LogsChannelID: "CHANNEL_ID" # Set to "" to disable
+
+      Tier2: # Second tier with stricter thresholds and actions - Continues from Tier 1
+        Protection:
+          kickThreshold: 4 # 2 more kicks than tier 1
+          banThreshold: 4
+          channelDeleteThreshold: 4
+          roleDeleteThreshold: 4
+          duration: "20s" # Time window to assess activity levels
+        Actions:
+          notify: ["USER_ID1", "USER_ID2"] # User IDs to notify
+          removeRole: true # Remove the user's role with moderation permissions
+          mute: false
+          ban: false
+        Logs:
+          Enabled: true
+          Embed:
+            Title: "Anti Nuke - Tier 2"
+            Description:
+              - "👤 **User:** {user}"
+              - "�� **Trigger:** {threshold}"
+              - "🚫 **Amount:** {threshold_amount}"
+              - "**📅 Date:** {timestamp}"
+            Color: "#1769FF"
+            Footer: "Anti Nuke | DrakoBot"
+            Thumbnail: true
+            LogsChannelID: "CHANNEL_ID"
+
+        # Supports unlimited tiers
+
+# Anti Hoist System
+AntiHoist:
+  EnableOnUserJoin: false # Enable Anti Hosting when a user joins the server
+  EnableOnUserUpdate: false # Enable Anti Hosting when a user edits their server profile
+  DefaultDisplayName: "zName" # If the users display name is only disallowed characters it will make it this
+  AllowRoles: ["ROLE_ID"] # What roles can use the command
+  DisallowedCharacters: ['-', '_', '!', '?', '.', '"'] # Characters to be removed from the beginning of the users display name
+  LogsChannelID: "CHANNEL_ID" # The channel to send logs to
+  LogEmbed:
+    Title: "☢️ Changed Users Nickname"
+    Description: 
+      - "**👤 User:** {user}"
+      - "🟥 **Old Display Name:** `{oldDisplayName}`"
+      - "🟩 **New Display Name:** `{newDisplayName}`"
+    Color: "#1769FF"
+    Footer: "Anti Hoist System | DrakoBot"
+    Thumbnail: true
+
+# Anti User Mass Mention
+AntiMassMention:
+  Enabled: false
+  Amount: 5 # Amount of user mentions in one message before it's considered mass mention
+  BypassPerms: ["ManageMessages"] # Users with these permissions bypass word blacklist, you can add multiple
+  BypassRoles: ["ROLE_ID"] # Users with these roles bypass anti discord invites, You can add multiple
+  Message: "{user}, mass mentions are not permitted here!"
+  TimeoutUser: true # Timeout user if they mass mention?
+  TimeoutTime: "5m" # Timeout time if TimeoutUser is set to true
+  LogsChannelID: "CHANNEL_ID" 
+  SendDM: true
+  DirectMessage: "{user} you have been muted for {time} for mass mentioning users."
+
+# Anti Spam
+AntiSpam:
+  Enabled: false
+  MsgLimit: 4 # The amount of messages that have be sent in the time specified below for it to be considered spam
+  TimeLimit: "1s"
+  BypassPerms: ["ManageMessages"] # Users with these permissions bypass word blacklist, you can add multiple
+  BypassRoles: ["ROLE_ID"] # Users with these roles bypass anti spam, You can add multiple
+  Message: "{user}, spamming is not permitted here!"
+  TimeoutUser: true # Timeout user if they spam?
+  TimeoutTime: "5m" # Timeout time if TimeoutUser is set to true
+  LogsChannelID: "CHANNEL_ID" 
+  SendDM: true
+  DirectMessage: "{user} you have been muted for {time} for spamming."
+  
+Report:
+  LogsChannelID: "CHANNEL_ID"
+  Embed:
+    Title: "📢 New Report"
+    Description:
+      - "### Reported Message"
+      - "**User:** {user}"
+      - "**Content:** {message}"
+      - "**Channel:** {channel}"
+      - "**[Jump to Message]({messageUrl})**"
+      - ""
+      - "### Report Details"
+      - "**Reporter:** {reportingUser}"
+      - "**Reason:** {reason}"
+      - "**Date:** {timestamp}"
+    Footer:
+      Text: "Report System | DrakoBot"
+      Icon: "{guildIcon}"
+    Author:
+      Text: ""
+      Icon: ""
+    Color: "#FF4B4B"
+    Image: ""
+    Thumbnail: "{guildIcon}" # {guildIcon} - Displays the guild icon
+
+# ===========================================================================
+# BACKUP CONFIGURATION
+# ===========================================================================
+Backup:
+  Enabled: false
+  Schedule: "1m" # Time between automatic backups (1d = 1 day, 1h = 1 hour, 1m = 1 minute)
+  MaxBackups: 5 # Maximum number of backups to keep (older backups will be rotated out)
+  LogsChannelID: "CHANNEL_ID" # Channel to log automatic backups (leave empty to disable)
+
+# ===========================================================================
+# USER JOIN/LEAVE MESSAGE CONFIGURATION
+# ===========================================================================
+# Placeholders
+# {userName}: YouSeeMeRunning
+# {user}: @YouSeeMeRunning
+# {userTag}: YouSeeMeRunning#1234
+# {userId}: 264032125496459265 - This is the ID
+# {userBanner}: Displays their users banner in the image field  
+# {UserCreation}: How old is their account? Discord timestamp 
+# {guildName}: Guild Name
+# {guildIcon}: Guild Icon
+# {memberCount}: Guild Member Count - 1st, 2nd, 3rd, 4th...
+# {memberCountNumeric}: Displays 5, 6, 7...
+# {longTime}: March 1st, 2023
+# {shortTime}: 17:00
+# {user-joinedAt}: For leave messages, displays when they first joined
+# {user-createdAt}: The date when the user's Discord account was created
+# {kickStatus}: Has the user been kicked or not?
+# {autoKickTime}: How long until the user is kicked
+# {invitedBy}: Who invited them?
+# {invitedByCount}: How many invites the person who invited them has
+# {joinDate} # Discord timestamp for when they joined
+# {joinTime} # Discord timestamp for when they joined
+# {leaveDate} # Discord timestamp for when they left
+# {leaveTime} # Discord timestamp for when they left
+
+WelcomeMessage:
+  Enabled: false
+  ChannelID: "CHANNEL_ID"
+  Type: "BOTH" # EMBED, MESSAGE, BOTH (If both are used the message will appear above the embed)
+  Text: "Welcome to **{guildName}**, {userName}"
+  Embed:
+    Title: ""
+    Description:
+      - "Welcome to **{guildName}**, {userName}! We're delighted to have you join our community. 🎉"
+      - "" 
+      - "Invited By » {invitedBy} ({invitedByCount} invites)" 
+      - "Join Date » {joinDate} ({joinTime})" 
+      - "Account Age » {UserCreation}" 
+      - "Members » {memberCount} member" 
+    Footer:
+      Text: "{guildName} • Today at {shortTime}"
+      Icon: "{guildIcon}"
+    Author:
+      Text: "Welcome to {guildName}!"
+      Icon: "https://static-00.iconduck.com/assets.00/hand-waving-icon-1875x2048-trzytj43.png"
+    Color: "#1769FF"
+    Image: "{userBanner}" # {userBanner} - Displays the users banner
+    Thumbnail: "{user-avatar}" # {user-avatar} - Displays the users avatar
+    Buttons:
+      - Type: "LINK"
+        Name: "Product"
+        Emoji: "📜"
+        Link: "https://builtbybit.com/resources/drako-bot-multi-purpose-discord-bot.22266/"
+  
+  
+  DM:
+    Enabled: false
+    Embed:
+      Title: "Welcomne, {userName}!"
+      Description:
+        - "Welcome to **{guildName}**, {userName}! We're delighted to have you join our community. 🎉"
+        - "You are our {memberCount} member!" 
+      Footer:
+        Text: "{guildName} • Today at {shortTime}"
+        Icon: "{guildIcon}"
+      Author:
+        Text: "Welcome to {guildName}!"
+        Icon: "https://static-00.iconduck.com/assets.00/hand-waving-icon-1875x2048-trzytj43.png"
+      Color: "#1769FF"
+      Image: "{userBanner}" # {userBanner} - Displays the users banner
+      Thumbnail: "{user-avatar}" # {user-avatar} - Displays the users avatar
+      Buttons:
+        - Type: "LINK"
+          Name: "Product"
+          Emoji: "📜"
+          Link: "https://builtbybit.com/resources/drako-bot-multi-purpose-discord-bot.22266/"
+
+LeaveMessage:
+  Enabled: false
+  ChannelID: "CHANNEL_ID"
+  Type: "BOTH" # EMBED, MESSAGE, BOTH (If both are used the message will appear above the embed)
+  Text: "Goodbye, {userName}!"
+  Embed:
+    Title: ""
+    Description:
+      - "Goodbye, {userName}!"
+      - "Hope to see you again soon...."
+    Footer:
+      Text: "{guildName} • {shortTime}"
+      Icon: "{guildIcon}"
+    Author:
+      Text: "👋 See you soon!"
+      Icon: ""
+    Color: "#1769FF"
+    Image: "" # {userBanner} - Displays the users banner
+    Thumbnail: "{user-avatar}" # {user-avatar} - Displays the users avatar
+ 
+# ===========================================================================
+# JOIN ROLE/VERIFICATION CONFIGURATION
+# ===========================================================================
+JoinRoleSettings:
+  Enabled: false
+  JoinRoles: ["ROLE_ID", "ROLE_ID"] # This is the roles users get when they join your discord server, You can add multiple
+  RestoreRoles: # Should the user get back their original roles before leaving the server?
+    Enabled: true # Leave below blank to give all roles
+    Blacklist: ["ROLE_ID", "ROLE_ID"] # If used, any roles not in the whitelist won't be given
+    Whitelist: ["ROLE_ID", "ROLE_ID"] # If used, all roles will be given apart from the ones defined
+
+# Verification Types:
+# BUTTON - When a user clicks the button, they get the specified role
+# CALCULATOR - Solve a math question to get a specified role
+VerificationSettings:
+  Enabled: false # Enable users to verify when they join your discord server?
+  DeleteAllMessages: false # Delete all user messages in the verification channel?
+  ChannelID: "CHANNEL_ID" # The channel users should verify in
+  VerificationType: "CAPTCHA" # Options: BUTTON, CALCULATOR, CAPTCHA
+  VerifiedRoleID: ["ROLE_ID"] # The roles users get when they successfully verify, You can add multiple
+  RoleToRemove: "" # The role to remove when they successfully verify, Leave blank for none
+  EnableUnverifiedRole: false # Enable the Unverified role? (Automatically created and denied access to all channels other than verify channel)
+
+VerificationEmbed:
+  Title: "Verify"
+  Description: "Please verify to get full access to the server.\nClick the **button** below to get verified!"
+  Image: "https://i.imgur.com/R4qVpUy.png"
+
+VerificationButton:
+  Name: "Verify"
+  Emoji: "✅"
+  Color: "Secondary" # Primary, Secondary, Success, Danger
+
+# ===========================================================================
+# GIVEAWAYS CONFIGURATION 
+# ===========================================================================
+Giveaways:
+  AllowRoles: ["ROLE_ID", "ROLE_ID"]
+  GiveawayStatusCheck: 7500 # in ms how often the giveaways will be checked to see if they have ended
+  DirectMessageWinners: true # Directly message the winners
+  Embed:
+    ActiveGiveaway:
+      EmbedColor: "#1769FF"
+      EmbedImage: "https://i.imgur.com/yw6UcuW.jpg"
+      EmbedFooterIcon: "https://i.imgur.com/13VlA3w.png"
+      EmbedThumbnail: "https://i.imgur.com/ewT6bOT.png"
+      ShowTitle: true
+      ShowThumbnail: true
+      ShowHostedBy: true
+      ShowEndsIn: true
+      ShowEntries: true
+      ShowWhitelistRoles: true
+      ShowBlacklistRoles: true
+      ShowMinimumServerJoinDate: true
+      ShowMinimumAccountAge: true
+      ShowMinimumMessages: true
+      ShowImage: true
+      ShowFooter: true
+      Button:
+        JoinButton:
+          ButtonStyle: "Primary"
+          ButtonEmoji: "🎉"
+          ButtonText: "Enter"
+        CheckPercent:
+          ButtonStyle: "Secondary"
+          ButtonEmoji: "📈"
+          ButtonText: "Odds"
+        ShowEntries:
+          ButtonStyle: "Secondary"
+          ButtonEmoji: "👥"
+          ButtonText: "Entries"
+        ShowEntrantsList:
+          ButtonStyle: "Secondary"
+          ButtonEmoji: "👥"
+          ButtonText: "Show Entrants"
+          Embed:
+            Title: "🎉 Giveaway Entrants - {prize}"
+            Description:
+              - "{entrantsList}"
+            Footer:
+              Text: "Total Entrants: {totalEntrants} • Page {currentPage}/{totalPages}"
+              Icon: "{footerIcon}"
+            Color: "#1769FF"
+            Thumbnail: "https://i.imgur.com/ewT6bOT.png"
+
+    EndedGiveaway:
+      EmbedColor: "#1769FF"
+      EmbedImage: "https://i.imgur.com/7TQDDAy.png"
+      EmbedFooterIcon: "https://i.imgur.com/13VlA3w.png"
+      EmbedThumbnail: "https://i.imgur.com/ewT6bOT.png"
+      ShowTitle: true
+      ShowThumbnail: true
+      ShowImage: true
+      ShowWinnersField: true
+      ShowEntriesField: true
+      ShowFooter: true
+
+# ===========================================================================
+# REACTION ROLES CONFIGURATION 
+# ===========================================================================
+ReactionRoles:
+  Enabled: false
+
+  Example:
+    type: "SELECT" # BUTTON, REACT, SELECT
+    resetReacts: true  # Should it remove the users reaction
+    ChannelID: "CHANNEL_ID"
+    Embed:
+      Title: "**  Choose Your Roles!**"
+      Description:
+        - " "
+        - ">   **DMs Open** » People are allowed to DM you"
+        - ">   **DMs Closed** » You dont want people to DM you"
+        - ">   **Ask To DM** » People need to request to DM you"
+        - " "
+        - "*(( React with the corresponding emoji to get your roles! ))*"
+      Footer:
+        Text: "Drako Bot | Reaction Role System"
+        Icon: "https://i.imgur.com/w5XxKpc.png"
+      Author:
+        Text: "Reaction Panel"
+        Icon: "https://i.imgur.com/w5XxKpc.png"
+      Color: "#1769FF"
+      Image: ""
+      Thumbnail: "https://i.imgur.com/w5XxKpc.png"
+    Reactions:
+      - Name: "DMs Open"
+        Emoji: "📢"
+        Style: "Success"
+        Description: "DMs are open"
+        RoleID: "ROLE_ID"
+      - Name: "DMs Closed"
+        Emoji: "❌"
+        Style: "Danger"
+        Description: "DMs are closed"
+        RoleID: "ROLE_ID"
+      - Name: "Ask to DM"
+        Emoji: "���"
+        Style: "Secondary"
+        Description: "Ask to DM"
+        RoleID: "ROLE_ID"
+
+    # Add more below
+
+# ===========================================================================
+# CUSTOM COMMANDS
+# ===========================================================================
+# {guildName}, {guildId}, {userName}, {userId}, {userMention}, {channelName}, {channelId}, {channelMention}, {commandName}, {longTime}, {shortTime}, {memberCount}
+
+CommandsEnabled: false
+CommandsPrefix: "!"
+
+CustomCommands:
+  mongo:
+    type: "EMBED"
+    Embed:
+      Title: "📊 MongoDB Setup Guide"
+      Description:
+        - "To get started with MongoDB, follow the detailed guide provided below. This guide will assist you in setting up MongoDB efficiently and correctly."
+        - ""
+        - "Need further assistance? Don't hesitate to open a support ticket."
+      Footer:
+        Text: "Drako Development | MongoDB Setup"
+        Icon: "https://i.imgur.com/w5XxKpc.png"
+      Color: "#1769FF"
+      Thumbnail: ""
+    Roles:
+      Whitelist: ["ROLE_ID", "ROLE_ID"]
+    Options:
+      DeleteTriggerMessage: false
+      ReplyToUser: false
+    Buttons:
+      - Type: "LINK"
+        Name: "MongoDB Setup"
+        Emoji: "📑"
+        Link: "https://docs.drakodevelopment.net/misc/mongodb-setup"
+
+ # See https://docs.drakodevelopment.net/our-bots/drako-bot/custom-commands for more examples
+
+# ===========================================================================
+# SUGGESTION SYSTEM
+# ===========================================================================
+SuggestionSettings:
+  Enabled: false
+  ChannelID: "CHANNEL_ID" # The channel where all the suggestions will be posted
+  ChannelSuggestionID: "CHANNEL_ID" # The channel where users can type suggestions (leave empty to use ChannelID)
+  AllowedRoles: ["ROLE_ID", "ROLE_ID"] # Roles allowed to use the suggestion command
+  SuggestionAcceptDenyRoles: ["ROLE_ID", "ROLE_ID"] # Roles that can accept and deny suggestions /suggestion accept/deny <id>
+  threadName: "{user}-suggestion" # Placeholders: {user}, Leave blank to disable
+  UseQuestionModal: true # Set to true to enable the question modal for suggestions
+  blockBlacklistWords: true # Should suggestions be filtered by the Blacklist Word System?
+  sendDM: true
+  AllowChannelSuggestions: false # Enable/disable creating suggestions by typing in channel
+  DeleteOriginalMessage: false # Whether to delete the original message when creating suggestion
+  DeleteFailureMessages: true # Whether to delete error messages after 5 seconds
+  FailureMessageTimeout: 5000 # How long to wait before deleting error messages (in milliseconds)
+
+  AdditionalModalInputs: # Limited to 4 extra inputs.
+    1: # Only works if you are using UseQuestionModal true
+      ID: "product" # {modal_product}
+      Question: "What product is your suggestion for?"
+      Placeholder: "Drako Bot, Drako Tickets, Discord"
+      Style: "Short" # Short + Paragraph
+      Required: true
+      maxLength: 1000
+
+SuggestionUpvote:
+  ButtonName: "{upvotecount} ({upvotePercent}%)"
+  ButtonEmoji: "👍"
+  ButtonColor: "Success" # Primary, Secondary, Success, Danger
+  upvoteEmoji: "👍"
+
+SuggestionDownvote:
+  ButtonName: "{downvotecount} ({downvotePercent}%)"
+  ButtonEmoji: "👎"
+  ButtonColor: "Danger" # Primary, Secondary, Success, Danger
+  downvoteEmoji: "👎"
+
+# Placeholders: {user}, {upvotecount}, {upvoteemoji}, {downvoteemoji}, {downvotecount}, {Suggestion}, {SuggestionID}, {ShortTime} ShortTime is HH:MM:SS. {LongTime} LongTime is May 5th 2024
+SuggestionEmbed:
+  EmbedColor: "#1769FF"
+  EmbedTitle: "{user}'s Suggestion"
+  EmbedDescription:
+  - "**Suggestion**"
+  - "```{suggestion}```" 
+  - "* **Information**"
+  - "> **Product:** {modal_product}" # product is the input from AdditionalModalInputs config
+  EmbedFooter: "Suggestion ID: {SuggestionID} | {LongTime}" # {SuggestionID}, {ShortTime}, {LongTime}
+  Thumbnail: True
+  AuthorIcon: True
+
+# Placeholders: {user}, {reason, {suggestion}, {SuggestionID}, {ShortTime} ShortTime is HH:MM:SS. {LongTime} LongTime is May 5th 2024
+SuggestionAcceptEmbed: 
+  AcceptChannelID: "1340821547224535192" # Define where the embed is posted once accepted. Leave blank for none
+  EmbedColor: "#4BB543"
+  EmbedTitle: "Accepted {user}'s Suggestion" 
+  EmbedBody: 
+  - "**Suggestion**"
+  - "```{suggestion}```"
+  - "**Reason**"
+  - "```{reason}```"
+  EmbedFooter: "Suggestion ID: {SuggestionID} | {LongTime}" # {SuggestionID}, {ShortTime}, {LongTime}
+  Thumbnail: True
+  AuthorIcon: True
+  
+# Placeholders: {user}, {reason}, {suggestion}, {SuggestionID}, {ShortTime} ShortTime is HH:MM:SS. {LongTime} LongTime is May 5th 2024
+SuggestionDenyEmbed: 
+  DenyChannelID: "1340821547224535192" # Define where the embed is posted once denied. Leave blank for none
+  EmbedColor: "#a82e2e"
+  EmbedTitle: "Denied {user}'s Suggestion" 
+  EmbedBody: 
+  - "**Suggestion**"
+  - "```{suggestion}```"
+  - "**Reason**"
+  - "```{reason}```"
+  EmbedFooter: "Suggestion ID: {SuggestionID} | {LongTime}" # {SuggestionID}, {ShortTime}, {LongTime}
+  Thumbnail: True
+  AuthorIcon: True
+
+# ===========================================================================
+# MUSIC CONFIGURATION
+# ===========================================================================
+MusicCommand:
+  Enabled: true
+
+  EnableWhitelist: false # Set to false to allow everyone to use all music commands
+  WhitelistRoles: ["ROLE_ID", "ROLE_ID"] # DJ role for example
+  BlacklistRoles: ["ROLE_ID", "ROLE_ID"]
+  LeaveOnEmpty: true
+  LeaveOnEmptyTimer: 10000 # ms
+  Emojis:
+    Platform:
+      YouTube: "https://i.imgur.com/r1QMg8M.png"
+      Spotify: "https://i.imgur.com/WBXUkBu.png"
+      SoundCloud: "https://i.imgur.com/cBAR3q2.png"
+      AppleMusic: "https://i.imgur.com/mtiwNMG.png"
+    Music: "🎵"
+    Play: "▶️"
+    Pause: "⏸️"
+    Back: "⏪"
+    Next: "⏩"
+    Repeat: "🔁"
+    Shuffle: "🔀"
+
+  Shuffle:
+    Enabled: true
+    Type: "TEXT" # EMBED or TEXT
+    Message: "🔀 Queue has been shuffled!"
+    Embed:
+      Title: "Queue Shuffled"
+      Description: "The music queue has been randomly reordered!"
+      Fields:
+        - Name: "Tracks in queue"
+          Value: "`{queueCount}`"
+          Inline: true
+      Image: ""
+      Thumbnail: "https://i.imgur.com/1jNHjDe.png"
+      Author:
+        Text: "Music System"
+        Icon: "🔀"
+      Footer:
+        Text: "Drako Bot - Music"
+        Icon: "https://i.imgur.com/csAsSqY.png"
+      Color: "#1769FF"
+
+  #====== placeholders ======#
+  # {id}, {title}, {description}, {author}, {url}, {thumbnail}, {duration}, {durationMS}, {views}, {requestedByMention}, {requestedByDisplayName}
+  # {playlistName}, {playlistUrl}, {playlistThumbnail}, {platform}, {platformEmoji}, {queueCount}, {queueDuration}
+
+  CurrentTrack:
+    Enabled: true
+    Type: "EMBED" # EMBED OR TEXT
+    Message: "Now playing **{title}** by {author} requested by {requestedByDisplayName}"
+    Embed:
+      Title: ""
+      Description: "`{title} - {author}`"
+      Fields:
+        - Name: "Requested by"
+          Value: "{requestedByMention}"
+          Inline: true
+        - Name: "Duration"
+          Value: "`{duration}`"
+          Inline: true
+        - Name: "Tracks in queue"
+          Value: "`{queueCount}`"
+          Inline: true
+      Image: ""
+      Thumbnail: "https://cdn.discordapp.com/attachments/627889189974966272/1209270505874391050/vinyl-gif.gif?ex=66ab682b&is=66aa16ab&hm=2ec12af1bbf206e11cf5bad371fab6e94b7477a41e86188df5330cccdd7b2f6f&" # {thumbnail} 
+      Author:
+        Text: "{platform}"
+        Icon: "{platformEmoji}"
+      Footer:
+        Text: "Drako Bot - Music"
+        Icon: "https://i.imgur.com/csAsSqY.png"
+      Color: "#1769FF"
+
+  TrackFinished:
+    Enabled: true
+    Type: "TEXT" # EMBED OR TEXT
+    Message: "Finished playing: **{title}** - {author}."
+    Embed:
+      Title: ""
+      Description: "Finished playing: `{title} - {author}`"
+      Fields:
+        # - Name: "Field name"
+        #   Value: "Field value"
+        #   Inline: true
+      Image: ""
+      Thumbnail: ""
+      Author:
+        Text: "{platform}"
+        Icon: "{platformEmoji}"
+      Footer:
+        Text: "Drako Bot - Music"
+        Icon: "https://i.imgur.com/csAsSqY.png"
+      Color: "#1769FF"
+ 
+  AddedTrack:
+    Enabled: true
+    Type: "TEXT" # EMBED OR TEXT
+    Message: "Added track to the queue: **{title}** - {author}."
+    Embed:
+      Title: ""
+      Description: "Added track to the queue: `{title} - {author}`"
+      Fields:
+        # - Name: "Field name"
+        #   Value: "Field value"
+        #   Inline: true
+      Image: ""
+      Thumbnail: ""
+      Author:
+        Text: "{platform}"
+        Icon: "{platformEmoji}"
+      Footer:
+        Text: "Drako Bot - Music"
+        Icon: "https://i.imgur.com/csAsSqY.png"
+      Color: "#1769FF"
+      
+  #====== placeholders ======#
+  # {id}, {url}, {requestedByMention}, {requestedByDisplayName}, {playlistName}, {playlistUrl}, {playlistThumbnail}, {trackCount}, {queueCount}, {queueDuration}
+
+  AddedTracks:
+    Enabled: true
+    Type: "TEXT" # EMBED OR TEXT
+    Message: "Added **{trackCount}** tracks to the queue!"
+    Embed:
+      Title: ""
+      Description: "Added **{trackCount}** tracks to the queue!"
+      Fields:
+        # - Name: "Field name"
+        #   Value: "Field value"
+        #   Inline: true
+      Image: ""
+      Thumbnail: ""
+      Author:
+        Text: "{platform}"
+        Icon: "{platformEmoji}"
+      Footer:
+        Text: "Drako Bot - Music"
+        Icon: "https://i.imgur.com/csAsSqY.png"
+      Color: "#1769FF"
+
+  NowPlaying:
+    Canvas:
+      Width: 1200
+      Height: 400
+    BackgroundGradient:
+      Start: "#1A1A2E"
+      End: "#16213E"
+    Font:
+      Header:
+        size: "32px"
+        weight: "800"
+        family: "Poppins, Arial, sans-serif"
+        fillStyle: "#E94560"
+      Title:
+        size: "40px"
+        weight: "700"
+        family: "Poppins, Arial, sans-serif"
+        fillStyle: "#FFFFFF"
+      Author:
+        size: "28px"
+        weight: "600"
+        family: "Poppins, Arial, sans-serif"
+        fillStyle: "#4ECCA3"
+      Time:
+        size: "24px"
+        weight: "500"
+        family: "Poppins, Arial, sans-serif"
+        fillStyle: "#EEEEEE"
+    ProgressBar:
+      BackgroundColor: "rgba(255, 255, 255, 0.1)"
+      GradientStart: "#E94560"
+      GradientEnd: "#4ECCA3"
+      Height: 20
+      BorderRadius: 10
+    ThumbnailPlaceholder:
+      Color: "#232931"
+    Overlay:
+      Color: "rgba(255, 255, 255, 0.03)"
+    Accent:
+      Color: "#4ECCA3"
+ 
+  Queue:
+    SongsPerPage: 5 # max 50
+    Embed:
+      Title: "Queue\nTime remaining: `{queueDuration}`"
+      Description: # dont change the order of the description or it will break 💀!!!
+      - "**Current Track:**\n**`{title} by {author}`**\n\n"
+      - "**Up Next:**\n"
+      - "**`{numberInQueue}.`** **{title}** by {author} - `{duration}`"
+      - "\nPage **{currentPage}** of **{totalPages}**"
+      Thumbnail: "https://i.imgur.com/1jNHjDe.png"
+      Image: "https://i.imgur.com/DF3p5Sv.png"
+      Author:
+        Text: ""
+        Icon: ""
+      Footer:
+        Text: "Drako Bot - Music"
+        Icon: "https://i.imgur.com/csAsSqY.png"
+      Color: "#1769FF"
+      Buttons:
+       Start: 
+        Style: "Secondary"
+        Emoji: "⏮️"
+        Text: "" # Example: First
+       Next:
+        Style: "Secondary"
+        Emoji: "⏩"
+        Text: "" # Example: Next
+       Back:
+        Style: "Secondary"
+        Emoji: "⏪"
+        Text: "" # Example: Back
+       End:
+        Style: "Secondary"
+        Emoji: "⏭️"
+        Text: "" # Example: Last
+ 
+  Filters:
+    Embed:
+      Title: "## Audio Filters"
+      Thumbnail: "https://i.imgur.com/1jNHjDe.png"
+      Fields:
+       Number: "Number"
+       Filter: "Filter"
+       Enabled: "Enabled"
+       Buttons:
+        Enabled:
+         Style: "Success"
+        Disabled:
+         Style: "Secondary"
+      Footer:
+        Text: "Drako Bot - Music"
+        Icon: "https://i.imgur.com/csAsSqY.png"
+      Color: "#1769FF"
+
+# ===========================================================================
+# GAMES
+# ===========================================================================
+Economy:
+  defaultInterestRate: 0.00
+  interestInterval: ["10:00"]
+  administrator: ["ROLE_ID", "ROLE_ID"]
+  maxInterestEarning: 100000  # Optional: Set to 0 for no limit
+
+  Daily:
+    baseAmount: 200
+    increasePerDay: 50
+    maxAmount: 1000
+
+  Fishing:
+    cooldown: "30m"
+    locations:
+      pond:
+        cost: 50
+        fish:
+          - name: "Minnow"
+            chance: 0.30
+            minReward: 30
+            maxReward: 60
+          - name: "Bluegill"
+            chance: 0.25
+            minReward: 50
+            maxReward: 100
+          - name: "Golden Koi"
+            chance: 0.02
+            minReward: 800
+            maxReward: 1600
+      lake:
+        cost: 150
+        fish:
+          - name: "Pike"
+            chance: 0.15
+            minReward: 250
+            maxReward: 500
+          - name: "Walleye"
+            chance: 0.12
+            minReward: 300
+            maxReward: 600
+          - name: "Sturgeon"
+            chance: 0.08
+            minReward: 500
+            maxReward: 1000
+          - name: "Muskie"
+            chance: 0.02
+            minReward: 1000
+            maxReward: 2000
+      ocean:
+        cost: 300
+        fish:
+          - name: "Mackerel"
+            chance: 0.22
+            minReward: 200
+            maxReward: 400
+          - name: "Cod"
+            chance: 0.20
+            minReward: 250
+            maxReward: 500
+          - name: "Blue Marlin"
+            chance: 0.01
+            minReward: 5000
+            maxReward: 10000
+      deep_sea:
+        cost: 500
+        fish:
+          - name: "Anglerfish"
+            chance: 0.25
+            minReward: 500
+            maxReward: 1000
+          - name: "Giant Squid"
+            chance: 0.12
+            minReward: 2000
+            maxReward: 4000
+          - name: "Colossal Squid"
+            chance: 0.08
+            minReward: 3000
+            maxReward: 6000
+          - name: "Megalodon"
+            chance: 0.02
+            minReward: 10000
+            maxReward: 20000
+
+  Beg:
+    cooldown: "10m"
+    min: 50
+    max: 200
+  Work:
+    cooldown: "10m"
+    min: 150
+    max: 500
+  Crime:
+    cooldown: "10m"
+    min: -300
+    max: 400
+  Blackjack:
+    cooldown: "0"
+    winMultiplier: 2.0
+  Roulette:
+    cooldown: "0"
+    winMultiplier:
+      red: 2
+      black: 2
+      green: 14
+  Coinflip:
+    cooldown: "0"
+  Slot:
+    cooldown: "0"
+    multiplier: 4
+  Roll:
+    cooldown: "0"
+  Rob:
+    cooldown: "2h" 
+    minBalanceToRob: 200
+    percent: "5%"
+    maxAmount: "5000"
+
+Store:
+  Ranks:
+    1:
+      Name: "Example Rank"
+      Description: "-# Gain the supporter role in our server"
+      Price: "10000"
+      RoleID: ["ROLE_ID", "ROLE_ID"]
+      Limit: "1"
+    2:
+      Name: "Example Rank with Booster"
+      Description: "-# Gain the supporter role in our server and a 1 day money booster."
+      Price: "20000"
+      RoleID: ["ROLE_ID", "ROLE_ID"]
+      Booster: "Money"
+      Multiplier: "1.5"
+      Duration: "24h"
+      Limit: "1"
+
+  Boosters:
+    1:
+      Name: "Example Booster"
+      Description: "-# Boost the amount of coins you can earn for 1 day"
+      Price: "15000"
+      RoleID: ["ROLE_ID", "ROLE_ID"]
+      Booster: "Money"
+      Multiplier: "1.5"
+      Duration: "24h"
+    2:
+      Name: "Fishing Luck Booster"
+      Description: "-# Increase your chances of catching rare fish by 20% for 1 day"
+      Price: "5000"
+      Booster: "FishingLuck"
+      Multiplier: "1.2"
+      Duration: "24h"
+
+  Items:
+    1:
+      Name: "Bank Interest 0.3%" # Purchasing a higher % one will override this one
+      Description: "-# Increase your bank interest by 0.3%"
+      Price: "10000"
+      Type: "Interest"
+      Interest: "0.3"
+      Limit: "1" # How many of these items can the user purchase? 
+    2:
+      Name: "Fishing Bait"
+      Description: "-# Increases your chances of catching fish"
+      Price: "100"
+      Type: "Consumable"
+      Uses: 5
+      Effect: "FishingCatchBonus"
+      Bonus: 1.2
+
+  Equipment:
+    1:
+      Name: "Basic Fishing Rod"
+      Description: "-# A simple rod for beginners"
+      Price: "1000"
+      Type: "FishingRod"
+      CatchBonus: 1.1
+      DurabilityBonus: 1.0
+      LuckBonus: 1.05
+      CooldownReduction: 60000  # 1 minute
+    2:
+      Name: "Master Fishing Rod"
+      Description: "-# The best rod money can buy"
+      Price: "50000"
+      Type: "FishingRod"
+      CatchBonus: 2.0
+      DurabilityBonus: 3.0
+      LuckBonus: 1.7
+      CooldownReduction: 900000  # 15 minutes
+
+  Embed:
+    Title: "{shopName} Store"
+    Description:
+      - "{itemCount}: {item} ({price} coins)"
+      - "{description}"
+    Footer:
+      Text: "Page {pageCurrent} of {pageMax}"
+      Icon: ""
+    Author:
+      Text: ""
+      Icon: ""
+    Color: "#1769FF"
+    Image: ""
+    Thumbnail: ""
+  Categories:
+    - "Ranks"
+    - "Boosters"
+    - "Items"
+    - "Equipment"
