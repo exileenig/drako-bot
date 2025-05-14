@@ -1,0 +1,72 @@
+ProductPanelRole: ["ROLE_ID"]
+
+panels:
+  DrakoBot:
+    title: "Drako Bot - Download Panel"
+    description:
+      - "**Please choose a product to download:**"
+      - ""
+      - "📦 **Standard Release** - **$9.99**"
+      - "[Purchase here](https://builtbybit.com/resources/drako-bot-multi-purpose-discord-bot.22266/?ref=discover)"
+      - ""
+      - "🧊 **Full Source** - **$52.99**"
+      - "[Purchase here](https://builtbybit.com/resources/drako-bot-multi-purpose-discord-bot.22266/?ref=discover)"
+      - ""
+      - "Need assistance or more info? Contact our support team."
+    Footer: "Powered by Drako Development"
+    ThumbnailURL: "https://i.imgur.com/aSUtzbN.png"
+    AuthorURL: ""
+    AuthorName: ""
+    FooterURL: "https://images-ext-1.discordapp.net/external/sRbhw85jURn7_EaCyTDHWOfmTKxvL1dklZw7TiNTOZQ/https/i.imgur.com/HDdh7Me.png?format=webp&quality=lossless&width=640&height=640"
+    embedColor: "#315FFF"
+    useButtons: true
+    products:
+      - name: "Standard"
+        emoji: "<:Developer:1208223076408361010>"
+        description: "Standard Download"
+        roleId: "ROLE_ID"
+        zipFilePath: "../../products/DrakoBot/Standard"
+        buttonLabel: "Standard Download"
+        buttonColor: "SECONDARY"
+      - name: "Full Source"
+        emoji: "<:Developer:1208223076408361010>"
+        description: "Full Source Download"
+        roleId: "ROLE_ID"
+        zipFilePath: "../../products/DrakoBot/FullSource"
+        buttonLabel: "Full Source Download"
+        buttonColor: "SECONDARY"
+    cooldownDuration: 60
+
+messages:
+  panelNotFound: "Panel configuration for \"%s\" not found."
+  panelPosted: "Panel Posted."
+  failedToDisplayPanel: "Failed to display panel."
+  productNotFound: "Product not found."
+  noRequiredRole: "You do not have the required role to download this product."
+  cooldownMessage: "You can download the product again %s. (just wait)"
+  fileSizeExceeds: "Sorry, the file size exceeds the current limit for this server's boost level. The maximum allowed is %s MB."
+  downloadReady: "Here is your download:"
+  downloadError: "Error preparing the download, please try again later."
+  preparingDownload: "Preparing your download..."
+
+selectMenu:
+  placeholder: "Choose a product"
+
+Log:
+  ChannelID: "" # Leave blank to disable
+  Embed:
+    Title: "📥 New Download Notification"
+    Description:
+      - "📌 **User:** {user}"
+      - "📦 **Product:** {productname}"
+      - "⏰ **Downloaded at:** {time}"
+      - "🔢 **Total Downloads:** {downloadamount}"
+    Footer:
+      Text: "Drako Development | Product Panel"
+      Icon: "https://i.imgur.com/w5XxKpc.png"
+    Author:
+      Text: "Download Tracker"
+      Icon: "https://i.imgur.com/aSUtzbN.png"
+    Color: "#315FFF"
+    Image: "https://www.newmaxstickers.com/wp-content/uploads/2017/10/download-banner-1100X350.jpg"
+    Thumbnail: ""
